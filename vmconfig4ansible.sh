@@ -6,6 +6,6 @@ PYTHONPATH="$(which python)"
 
 if [ "$PYTHONPATH != "/usr/bin/python" ]; then
 	echo "Python interpreter\'s location is $PYTHONPATH"
-	echo "Check it using \"which python\""
+	echo "Check it using 'which python'"
 	exit 2
 fi
