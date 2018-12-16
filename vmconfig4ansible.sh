@@ -15,3 +15,4 @@ sudo mkdir -p /home/$ANSIBLE_USER/.ssh
 echo $PUBKEY >> authorized_keys
 sudo mv authorized_keys /home/$ANSIBLE_USER/.ssh/authorized_keys
 sudo chown ansible:ansible -R /home/$ANSIBLE_USER/
+sudo chmod 600 /home/$ANSIBLE_USER/.ssh/authorized_keys
