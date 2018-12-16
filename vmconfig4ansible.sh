@@ -18,3 +18,8 @@ echo $PUBKEY >> authorized_keys
 sudo mv authorized_keys /home/$ANSIBLE_USER/.ssh/authorized_keys
 sudo chown ansible:ansible -R /home/$ANSIBLE_USER/
 sudo chmod 600 /home/$ANSIBLE_USER/.ssh/authorized_keys
+
+# Passwordless sudo
+echo "Configuring passwordless sudo..."
+echo "$ANSIBLE_USER ALL=NOPASSWD: ALL" >> user-$ANSIBLE_USER
+sudo mv user-$ANSIBLE_USER /etc/sudoers.d/
