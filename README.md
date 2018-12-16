@@ -1,6 +1,6 @@
 Este repositorio contiene el script que debe ejecutarse en una VM recién creada para poder ser gestionada usando Ansible.
 
-> Más información en 
+> Más información en [Automatizando la configuracion de una VM para Ansible](https://onthedock.github.io/post/181216-automatizando-la-configuracion-previa-de-una-vm-para-ansible/).
 
 Descarga el fichero y conviértelo en ejecutable: `chmod +x vmconfig4ansible.sh`.
 
