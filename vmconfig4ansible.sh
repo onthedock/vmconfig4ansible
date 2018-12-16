@@ -12,5 +12,5 @@ sudo useradd $ANSIBLE_USER
 # Create .ssh folder
 sudo mkdir -p /home/$ANSIBLE_USER/.ssh
 # Copy PUBKEY to authorized_keys for $ANSIBLE_USER
-sudo touch /home/$ANSIBLE_USER/.ssh/authorized_keys
-sudo echo $PUBKEY >> /home/$ANSIBLE_USER/.ssh/authorized_keys
+echo $PUBKEY >> authorized_keys
+sudo mv authorized_keys /home/$ANSIBLE_USER/.ssh/authorized_keys
