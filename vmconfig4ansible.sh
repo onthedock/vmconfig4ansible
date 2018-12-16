@@ -11,7 +11,7 @@ echo "Adding user $ANSIBLE_USER ..."
 sudo useradd $ANSIBLE_USER
 
 # Create .ssh folder
-echo "Configuring user $ANSIBLE_USER\'s authorized_keys"
+echo "Configuring user $ANSIBLE_USER authorized_keys"
 sudo mkdir -p /home/$ANSIBLE_USER/.ssh
 # Copy PUBKEY to authorized_keys for $ANSIBLE_USER
 echo $PUBKEY >> authorized_keys
