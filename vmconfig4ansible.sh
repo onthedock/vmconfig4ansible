@@ -1,27 +1,15 @@
-# # Check Python version
-
-# PYTHONVERSION_MAJOR=$(python -c \"import sys; print sys.version_info[0]\")
-# PYTHONVERSION_MINOR=$(python -c \"import sys; print sys.version_info[1]\")
-
-# if [ $PYTHONVERSION_MAJOR = 2 ]; then
-# 	if [ $PYTHONVERSION_MINOR < 6 ]; then
-# 		echo "Minimum Python version should be 2.6 (it\'s $PITHONVERSION_MAJOR.$PYTHONVERSION_MINOR)"
-# 		exit 1
-# 	fi
-# 	sudo apt install python3
-# fi
+ANSIBLE_USER="ansible"
+PUBKEY="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDHBSiThZLQlmhxojpY/jmkalC3dI7bEsUpuY9GTLchP19Gp3/8hy6iFR3PK1GY+1UZou9Ch04/1SKVrElYoLA7y4XGQ+XP/Ph9aCnX4XLyPdZXogh6y4WcQwONS9Xco5Wv6fbJbK7hAf/fP0FD3EY44Akif/1nADWcI7fe3goyB/378nowerYrOuhrShOso+lvtFj1RBquFxPbJF13HzASrus6pmhtdTKso7zruBdU6HOR5YeqFtO7uQEzB8yKZRB+bjyhpwSb4B/y+awNTPlrdO/ECswAz0C9fEzmjt85Hr5EzXwaTi0XwKHKKpK4LVH/SYZoJFC/A1vlojBFlsOR operador@ansible"
 
 # Always install Python 3
 sudo apt install python3 -y
 # Update Python location
 sudo ln -sf /usr/bin/python3 /usr/bin/python
 
-# Check Python interpreter's location
-# which python --> /usr/bin/python
-# PYTHONPATH="$(which python)"
+# Create ansible user
+sudo useradd $ANSIBLE_USER
 
-# if [ $PYTHONPATH != "/usr/bin/python" ]; then
-# 	echo "Python interpreter\'s location is $PYTHONPATH"
-# 	echo "Check it using \'which python\' (should be /usr/bin/python)."
-# 	exit 2
-# fi
+# Create .ssh folder
+sudo mkdir -p /home/$ANSIBLE_USER/.ssh
+# Copy PUBKEY to authorized_keys for $ANSIBLE_USER
+sudo echo $PUBKEY >> /home/$ANSIBLE_USER/.ssh/authorized_keys
