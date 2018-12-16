@@ -4,8 +4,8 @@
 # which python --> /usr/bin/python
 PYTHONPATH="$(which python)"
 
-if ["$PYTHONPATH != "/usr/bin/python" ]; then
-	echo "Python interpreter\'s location is $PYTHONPATH!"
+if [ "$PYTHONPATH != "/usr/bin/python" ]; then
+	echo "Python interpreter\'s location is $PYTHONPATH"
 	echo "(should be /usr/bin/python)"
 	echo "Check it using \"which python\""
 	exit 2
