@@ -11,12 +11,17 @@
 # 	sudo apt install python3
 # fi
 
+# Always install Python 3
+sudo apt install python3
+# Update Python location
+sudo ln -sf /usr/bin/python3 /usr/bin/python
+
 # Check Python interpreter's location
 # which python --> /usr/bin/python
-PYTHONPATH="$(which python)"
+# PYTHONPATH="$(which python)"
 
-if [ $PYTHONPATH != "/usr/bin/python" ]; then
-	echo "Python interpreter\'s location is $PYTHONPATH"
-	echo "Check it using \'which python\' (should be /usr/bin/python)."
-	exit 2
-fi
+# if [ $PYTHONPATH != "/usr/bin/python" ]; then
+# 	echo "Python interpreter\'s location is $PYTHONPATH"
+# 	echo "Check it using \'which python\' (should be /usr/bin/python)."
+# 	exit 2
+# fi
