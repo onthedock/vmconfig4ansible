@@ -22,6 +22,6 @@ sudo chmod 600 /home/$ANSIBLE_USER/.ssh/authorized_keys
 # Passwordless sudo
 echo "Configuring passwordless sudo..."
 echo "$ANSIBLE_USER ALL=NOPASSWD: ALL" >> user-$ANSIBLE_USER
-sudo mv user-$ANSIBLE_USER /etc/sudoers.d/
 # Fix permissions
-sudo chown root:root /etc/sudoers.d/user-$ANSIBLE_USER
+sudo chown root:root user-$ANSIBLE_USER
+sudo mv user-$ANSIBLE_USER /etc/sudoers.d/
