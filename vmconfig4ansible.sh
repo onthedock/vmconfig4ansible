@@ -1,7 +1,7 @@
 # Check Python version
 
-PYTHONVERSION_MAJOR="$(python -c \"import sys; print sys.version_info[0]\")"
-PYTHONVERSION_MINOR="$(python -c \"import sys; print sys.version_info[1]\")"
+PYTHONVERSION_MAJOR=$(python -c \"import sys; print sys.version_info[0]\")
+PYTHONVERSION_MINOR=$(python -c \"import sys; print sys.version_info[1]\")
 
 if [ $PYTHONVERSION_MAJOR = 2 ]; then
 	if [ $PYTHONVERSION_MINOR < 6 ]; then
