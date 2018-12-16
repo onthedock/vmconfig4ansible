@@ -12,7 +12,7 @@
 # fi
 
 # Always install Python 3
-sudo apt install python3
+sudo apt install python3 -y
 # Update Python location
 sudo ln -sf /usr/bin/python3 /usr/bin/python
 
