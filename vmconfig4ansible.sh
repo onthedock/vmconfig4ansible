@@ -1,4 +1,4 @@
-Check Python version
+# Check Python version
 # python -V
 # Check Python interpreter's location
 # which python --> /usr/bin/python
