@@ -1,14 +1,12 @@
-ANSIBLE_USER="ansible"
-PUBKEY="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDHBSiThZLQlmhxojpY/jmkalC3dI7bEsUpuY9GTLchP19Gp3/8hy6iFR3PK1GY+1UZou9Ch04/1SKVrElYoLA7y4XGQ+XP/Ph9aCnX4XLyPdZXogh6y4WcQwONS9Xco5Wv6fbJbK7hAf/fP0FD3EY44Akif/1nADWcI7fe3goyB/378nowerYrOuhrShOso+lvtFj1RBquFxPbJF13HzASrus6pmhtdTKso7zruBdU6HOR5YeqFtO7uQEzB8yKZRB+bjyhpwSb4B/y+awNTPlrdO/ECswAz0C9fEzmjt85Hr5EzXwaTi0XwKHKKpK4LVH/SYZoJFC/A1vlojBFlsOR operador@ansible"
+ANSIBLE_USER="ansible-service-account"
+PUBKEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIMWNkk1bjgQLTFPvfkvTYmg/DKtsF1J962YKfigIAcD ansible-service-account"
 
-# Always install Python 3
-sudo apt install python3 -y
-# Update Python location
-sudo ln -sf /usr/bin/python3 /usr/bin/python
-
-# Create ansible user
-echo "Adding user $ANSIBLE_USER ..."
-sudo useradd $ANSIBLE_USER
+# Passwordless sudo
+echo "Configuring passwordless sudo..."
+echo "$ANSIBLE_USER ALL=NOPASSWD: ALL" >> $ANSIBLE_USER
+# Fix permissions
+sudo chown root:root $ANSIBLE_USER
+sudo mv $ANSIBLE_USER /etc/sudoers.d/
 
 # Create .ssh folder
 echo "Configuring user $ANSIBLE_USER authorized_keys"
@@ -16,12 +14,14 @@ sudo mkdir -p /home/$ANSIBLE_USER/.ssh
 # Copy PUBKEY to authorized_keys for $ANSIBLE_USER
 echo $PUBKEY >> authorized_keys
 sudo mv authorized_keys /home/$ANSIBLE_USER/.ssh/authorized_keys
-sudo chown ansible:ansible -R /home/$ANSIBLE_USER/
+sudo chown $ANSIBLE_USER:$ANSIBLE_USER -R /home/$ANSIBLE_USER/
 sudo chmod 600 /home/$ANSIBLE_USER/.ssh/authorized_keys
 
-# Passwordless sudo
-echo "Configuring passwordless sudo..."
-echo "$ANSIBLE_USER ALL=NOPASSWD: ALL" >> user-$ANSIBLE_USER
-# Fix permissions
-sudo chown root:root user-$ANSIBLE_USER
-sudo mv user-$ANSIBLE_USER /etc/sudoers.d/
+# Create ansible user
+echo "Adding user $ANSIBLE_USER ..."
+sudo useradd $ANSIBLE_USER
+
+# Always install Python 3
+sudo apt install python3 -y
+# Update Python location
+sudo ln -sf /usr/bin/python3 /usr/bin/python
