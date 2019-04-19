@@ -1,6 +1,6 @@
 Este repositorio contiene el script que debe ejecutarse en una VM recién creada para poder ser gestionada usando Ansible.
 
-> Más información en [Automatizando la configuracion de una VM para Ansible](https://onthedock.github.io/post/181216-automatizando-la-configuracion-previa-de-una-vm-para-ansible/).
+> Más información [Instalación de Ansible en Debian 9](https://onthedock.github.io/post/190419-instalacion-de-ansible-en-debian9/).
 
 Descarga el fichero:
 
